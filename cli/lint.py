@@ -2,7 +2,7 @@ import os
 import subprocess
 import logging
 
-from lib import get_python_path, get_root_path
+from core import get_python_path, get_root_path
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(os.path.basename(__file__))
