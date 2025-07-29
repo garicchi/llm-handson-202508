@@ -68,7 +68,7 @@ Macのパッケージマネージャであるhomebrewをインストールしま
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-> ![NOTE]
+> [!NOTE]
 > ターミナルアプリの起動がわからない場合は、Commandキーとスペースキーを同時に押し、 `ターミナル` と入力して、起動します
 
 ![1](./img/mac_spotlight_terminal.png)
