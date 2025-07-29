@@ -68,6 +68,12 @@ Macのパッケージマネージャであるhomebrewをインストールしま
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+> [!NOTE]
+> ターミナルアプリの起動がわからない場合は、Commandキーとスペースキーを同時に押し、Spotlightを起動します。
+> 入力画面に `ターミナル` と入力して、起動します
+
+![1](./img/mac_spotlight_terminal.png)
+
 
 ## git
 `ターミナル` アプリにて、下記コマンドを実行し、gitのバージョン番号が表示されれば大丈夫です。
