@@ -89,6 +89,10 @@ git -v
 > xcode-select --install
 > ```
 
+> [!WARNING]
+> xcode-select --installは完了までに時間がかかります
+> お持ちのMacOSが古い場合は、なるべく事前に確認していただけると助かります
+
 ## Azure AI Foundry Localのインストール
 
 `ターミナル` アプリを開き、以下の2つのコマンドを入力してAzure AI Foundry Localをインストールします。
