@@ -2,7 +2,7 @@ import os
 import subprocess
 import logging
 
-from core import get_pip_path, get_root_path, get_venv_path
+from core import get_pip_path, get_root_path, get_root_python_path, get_venv_path
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(os.path.basename(__file__))
@@ -16,7 +16,7 @@ def create_venv() -> None:
         return
 
     logger.info("venvを作成します")
-    subprocess.run(["python", "-m", "venv", venv_dir], shell=False)
+    subprocess.run([get_root_python_path(), "-m", "venv", venv_dir], shell=False)
     logger.info("🍺venvが作成されました")
 
 
