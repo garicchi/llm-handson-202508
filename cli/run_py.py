@@ -4,7 +4,7 @@ import subprocess
 import logging
 import argparse
 
-from core import get_python_path, get_root_path
+from core import get_root_path, get_venv_python_path
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(os.path.basename(__file__))
@@ -20,7 +20,7 @@ def run_py() -> None:
         logger.error("実行するPythonファイルを指定してください")
         exit(1)
 
-    cmd = [get_python_path(), args.script] + args.args
+    cmd = [get_venv_python_path(), args.script] + args.args
     subprocess.run(cmd, shell=False)
 
 

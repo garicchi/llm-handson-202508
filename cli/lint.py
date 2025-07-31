@@ -2,7 +2,7 @@ import os
 import subprocess
 import logging
 
-from core import get_python_path, get_root_path
+from core import get_root_path, get_venv_python_path
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(os.path.basename(__file__))
@@ -10,7 +10,7 @@ logger = logging.getLogger(os.path.basename(__file__))
 
 def run_black() -> None:
     logging.info("blackを実行します")
-    subprocess.run([get_python_path(), "-m", "black", get_root_path()], shell=False)
+    subprocess.run([get_venv_python_path(), "-m", "black", get_root_path()], shell=False)
     logging.info("🍺blackの実行が完了しました")
 
 

@@ -8,7 +8,7 @@ def get_root_path() -> Path:
 def get_venv_path() -> Path:
     return get_root_path() / 'venv'
 
-def get_python_bin_dir() -> Path:
+def get_venv_bin_dir() -> Path:
     venv_dir = get_venv_path()
     if os.name == 'nt':
         return venv_dir / 'Scripts'
@@ -16,10 +16,15 @@ def get_python_bin_dir() -> Path:
 
 def get_pip_path() -> Path:
     if os.name == 'nt':
-        return get_python_bin_dir() / 'pip.exe'
-    return get_python_bin_dir() / 'pip'
+        return get_venv_bin_dir() / 'pip.exe'
+    return get_venv_bin_dir() / 'pip3'
 
-def get_python_path() -> Path:
+def get_venv_python_path() -> Path:
     if os.name == 'nt':
-        return get_python_bin_dir() / 'python.exe'
-    return get_python_bin_dir() / 'python'
+        return get_venv_bin_dir() / 'python.exe'
+    return get_venv_bin_dir() / 'python3'
+
+def get_root_python_path() -> Path:
+    if os.name == 'nt':
+        return 'python.exe'
+    return 'python3'
