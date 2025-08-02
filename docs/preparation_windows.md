@@ -30,7 +30,7 @@
 ## Pythonのインストール
 Pythonというプログラミング言語の環境をインストールします。
 
-> [!WARNING]
+> [!NOTE]
 > すでにPython3系を使用されている方はスキップで大丈夫です。
 
 [https://www.python.org/downloads/](https://www.python.org/downloads/) をブラウザで開き、`Download Python 3.**` をクリックしてインストーラーをダウンロードします。
@@ -92,18 +92,18 @@ winget install Microsoft.FoundryLocal
 
 下記コマンドで、 `phi-4-mini` という名前のモデルをダウンロードします
 
+```
+foundry model download phi-4-mini
+```
+
+![1](./img/windows_foundry_model_download.png)
+
 > [!NOTE]
 > 約5GBほど、ダウンロードとディスク消費が発生します。
 > 当日、会場でダウンロードされる方やディスク容量が気になる方は、下記にある `[必要な方のみ] 軽量版のLLMモデルをダウンロードする` を実施してください
 
 > [!WARNING]
 > ハンズオン会場のネットワーク負荷にならないように、会場でのダウンロードの場合はなるべく軽量版の手順でダウンロードを行なってください
-
-```
-foundry model download phi-4-mini
-```
-
-![1](./img/windows_foundry_model_download.png)
 
 ## [必要な方のみ] 軽量版のLLMモデルをダウンロードする
 
