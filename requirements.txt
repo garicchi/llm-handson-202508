@@ -1,3 +1,2 @@
 langchain[openai]
 foundry-local-sdk
-black
