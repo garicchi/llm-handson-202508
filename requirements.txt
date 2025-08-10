@@ -1,3 +1,2 @@
-langchain[openai]
-foundry-local-sdk
-black
+langchain[openai]==0.3.27
+foundry-local-sdk==0.3.1
