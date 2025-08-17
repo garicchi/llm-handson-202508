@@ -3,7 +3,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from foundry_local import FoundryLocalManager
 
 # 使用するモデル名
-model_alias = 'phi-4'
+model_alias = 'phi-4-mini'
 # 軽量版を使用する場合はこちらをコメントアウト
 # model_alias = 'qwen2.5-0.5b'
 
@@ -21,11 +21,11 @@ llm = ChatOpenAI(
     streaming=False
 )
 
-input = input("入力してください > ")
+user_input = input("入力してください > ")
 
-print(f'[ユーザー]: {input}')
+print(f'[ユーザー]: {user_input}')
 print('回答を生成しています...')
 
-output_message = llm.invoke(input)
+assistang_output = llm.invoke(user_input)
 
-print(f"[アシスタント]: {output_message.content}")
+print(f"[アシスタント]: {assistang_output.content}")
