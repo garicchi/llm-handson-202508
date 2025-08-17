@@ -1,13 +1,17 @@
-import os
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from foundry_local import FoundryLocalManager
 
-model_alias = "phi-4-mini"
+# 使用するモデル名
+model_alias = 'phi-4'
+# 軽量版を使用する場合はこちらをコメントアウト
+# model_alias = 'qwen2.5-0.5b'
 
-print('llmを初期化しています...')
+manager = FoundryLocalManager()
 
-manager = FoundryLocalManager(model_alias)
+# モデルがダウンロードされているか確認
+if not [x for x in manager.list_cached_models() if x.alias == model_alias]:
+    raise Exception(f'モデルがダウンロードされていません {model_alias}')
 
 llm = ChatOpenAI(
     model=manager.get_model_info(model_alias).id,
@@ -17,24 +21,11 @@ llm = ChatOpenAI(
     streaming=False
 )
 
-prompt = ChatPromptTemplate.from_messages([
-    (
-        "system",
-        "あなたの名前はマイクです。日本語で回答を行います。"
-    ),
-    ("human", "{input}")
-])
-
-chain = prompt | llm
-
 input = input("入力してください > ")
 
 print(f'[ユーザー]: {input}')
 print('回答を生成しています...')
 
-output_message = chain.invoke({
-    "input": input
-})
-
+output_message = llm.invoke(input)
 
 print(f"[アシスタント]: {output_message.content}")
