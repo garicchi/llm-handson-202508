@@ -18,20 +18,18 @@ if not [x for x in manager.list_cached_models() if x.alias == model_alias]:
 llm = ChatOpenAI(
     model=manager.get_model_info(model_alias).id,
     base_url=manager.endpoint,
-    api_key=manager.api_key,
-    temperature=0.6,
-    streaming=False
+    api_key=manager.api_key
 )
 
+# 文章の類似度を計算する関数
+#   text1を2文字ずつ区切って、text2の中に含まれる数を類似度とする
 def calc_similarity(text1: str, text2: str) -> int:
-    """
-    text1とtext2の類似度を計算する関数
-    """
     chunk_char_count = 2
     chunked_list = [''.join(text1[i:i+chunk_char_count]) for i in range(0, len(text1), chunk_char_count)]
     score = sum(1 for chunk in chunked_list if chunk in text2)
     return score
 
+# RAGの知識 (markdown形式)
 knowledge = '''
 ## バナナシステムとは
 バナナシステムとは、USB接続されたバナナを使って他者と通話するシステムです
@@ -40,13 +38,14 @@ knowledge = '''
 りんごシステムとは、USB接続されたりんごを使って他者と通話するシステムです
 '''
 
+# markdownのテキストを分割するTextSplitter
 text_splitter = MarkdownHeaderTextSplitter([
     ("#", "Header 1"),
     ("##", "Header 2"),
-    ("###", "Header 3"),
-
+    ("###", "Header 3")
 ])
 
+# RAGの知識テキストを分割
 splitted_texts = text_splitter.split_text(knowledge)
 
 # ユーザー入力を取得
@@ -65,11 +64,15 @@ prompt_template = ChatPromptTemplate.from_messages([
     ('user', '{user_input_data}')
 ])
 
-target_knowledge = max(splitted_texts, key=lambda x: calc_similarity(user_input, x.page_content)).page_content
+# 分割したテキストの中から、ユーザー入力に最も類似したものを選択
+target_knowledge = max(
+    splitted_texts, 
+    key=lambda x: calc_similarity(user_input, x.page_content)
+)
 
-# プロンプトにユーザー入力値を埋め込む
+# プロンプトに知識とユーザー入力値を埋め込む
 prompt = prompt_template.invoke({
-    'rag_knowledge': target_knowledge,
+    'rag_knowledge': target_knowledge.page_content,
     'user_input_data': user_input
 })
 
