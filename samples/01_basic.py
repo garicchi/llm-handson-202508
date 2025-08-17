@@ -26,6 +26,6 @@ user_input = input("入力してください > ")
 print(f'[ユーザー]: {user_input}')
 print('回答を生成しています...')
 
-assistang_output = llm.invoke(user_input)
+assistant_output = llm.invoke(user_input)
 
-print(f"[アシスタント]: {assistang_output.content}")
+print(f"[アシスタント]: {assistant_output.content}")
