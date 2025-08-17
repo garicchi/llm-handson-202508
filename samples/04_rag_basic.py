@@ -17,11 +17,10 @@ if not [x for x in manager.list_cached_models() if x.alias == model_alias]:
 llm = ChatOpenAI(
     model=manager.get_model_info(model_alias).id,
     base_url=manager.endpoint,
-    api_key=manager.api_key,
-    temperature=0.6,
-    streaming=False
+    api_key=manager.api_key
 )
 
+# RAGの知識を定義
 knowledge = '''
 バナナシステムとは、USB接続されたバナナを使って他者と通話するシステムです
 '''
@@ -35,16 +34,20 @@ print('回答を生成しています...')
 
 # プロンプトを定義
 prompt_template = ChatPromptTemplate.from_messages([
+    # RAGの知識を入れた、システムプロンプト
     ('system', '''
      あなたは日本語で回答するAIアシスタントです。名前はマイクです
      {rag_knowledge}
      '''),
+     # ユーザープロンプト
     ('user', '{user_input_data}')
 ])
 
 # プロンプトにユーザー入力値を埋め込む
 prompt = prompt_template.invoke({
+    # RAGの知識
     'rag_knowledge': knowledge,
+    # ユーザー入力
     'user_input_data': user_input
 })
 

@@ -18,9 +18,7 @@ if not [x for x in manager.list_cached_models() if x.alias == model_alias]:
 llm = ChatOpenAI(
     model=manager.get_model_info(model_alias).id,
     base_url=manager.endpoint,
-    api_key=manager.api_key,
-    temperature=0.6,
-    streaming=False
+    api_key=manager.api_key
 )
 
 # ユーザー入力を取得
@@ -30,14 +28,17 @@ print(f'[ユーザー]: {user_input}')
 
 print('回答を生成しています...')
 
-# プロンプトを定義
+# プロンプトテンプレートを定義
 prompt_template = ChatPromptTemplate.from_messages([
+    # システムプロンプト
     ('system', 'あなたは日本語で回答するAIアシスタントです。名前はマイクです'),
+    # ユーザープロンプト
     ('user', '{user_input_data}')
 ])
 
-# プロンプトにユーザー入力値を埋め込む
+# プロンプトにユーザー入力値を埋め込んでプロンプトを生成
 prompt = prompt_template.invoke({
+    # {user_input_data}の部分を置き換える
     'user_input_data': user_input
 })
 
