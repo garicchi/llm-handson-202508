@@ -17,7 +17,7 @@
 #### Macの場合
 LaunchPadもしくはCommand + スペースを押し、 `code` と入力してVisualStudioCodeを起動します
 
-### リポジトリをcloneする
+### [最初の1回のみ] リポジトリをcloneする
 VisualStudioCodeのメニューバーから、 `View` > `Command Palette...` をクリックし、 `Git: Clone` と入力します
 
 URLを入れる入力ボックスが表示されるので、以下のURLを入力します
@@ -26,11 +26,11 @@ URLを入れる入力ボックスが表示されるので、以下のURLを入�
 
 `Clone from URL` というボタンが表示されるので、クリックします
 
-> [!NOTE]
-> Would you like to open cloned repository? 
-> と聞かれたらOpenを押してください
+フォルダの選択ダイアログが出るので、サンプルコードを保存したいフォルダを選択します
 
-### venvを作ってライブラリをインストールする
+`Would you like to open cloned repository? ` と聞かれたら、 `Open` を押してください
+
+### [最初の1回のみ] venvを作ってライブラリをインストールする
 VisualStudioCodeのメニューバーから、 `Terminal` > `New Terminal` をクリックしてターミナルを開きます
 
 #### Windowsの場合
@@ -45,7 +45,7 @@ python ./cli/setup.py
 python3 ./cli/setup.py
 ```
 
-### venvを起動する
+### [VSCodeを起動するたび] venvを起動する
 
 #### Windowsの場合
 以下を入力してENTERを押します
