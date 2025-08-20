@@ -10,14 +10,14 @@
 
 ## サンプルコード起動手順
 
-### Visual Studio Codeを起動する
-#### Windowsの場合
+### ① Visual Studio Codeを起動する
+#### [Windows]
 スタートメニューもしくはWinキーを押し、 `code` と入力してVisualStudioCodeを起動します
 
-#### Macの場合
+#### [Mac]
 LaunchPadもしくはCommand + スペースを押し、 `code` と入力してVisualStudioCodeを起動します
 
-### [最初の1回のみ] リポジトリをcloneする
+### ② [最初の1回のみ] リポジトリをcloneする
 VisualStudioCodeのメニューバーから、 `View` > `Command Palette...` をクリックし、 `Git: Clone` と入力します
 
 URLを入れる入力ボックスが表示されるので、以下のURLを入力します
@@ -30,16 +30,16 @@ URLを入れる入力ボックスが表示されるので、以下のURLを入�
 
 `Would you like to open cloned repository? ` と聞かれたら、 `Open` を押してください
 
-### [最初の1回のみ] venvを作ってライブラリをインストールする
+### ③ [最初の1回のみ] venvを作ってライブラリをインストールする
 VisualStudioCodeのメニューバーから、 `Terminal` > `New Terminal` をクリックしてターミナルを開きます
 
-#### Windowsの場合
+#### [Windows]
 以下を入力してENTERを押します
 ```
 python ./cli/setup.py
 ```
 
-#### Macの場合
+#### [Mac]
 以下を入力してENTERを押します
 
 ```
@@ -48,9 +48,9 @@ python3 ./cli/setup.py
 
 ※ この手順では、Macの場合、 `python3` なので注意してください
 
-### [VSCodeを起動するたび] venvを起動する
+### ④ [VSCodeを起動するたび] venvを起動する
 
-#### Windowsの場合
+#### [Windows]
 以下を入力してENTERを押します
 ```
 Set-ExecutionPolicy RemoteSigned -Scope Process
@@ -61,7 +61,7 @@ Set-ExecutionPolicy RemoteSigned -Scope Process
 
 ターミナルの左端に `(venv)` と表示されればOKです
 
-#### Macの場合
+#### [Mac]
 以下を入力してENTERを押します
 ```
 source ./venv/bin/activate
@@ -69,9 +69,10 @@ source ./venv/bin/activate
 
 ターミナルの左端に `(venv)` と表示されればOKです
 
-### 01_basic.pyを起動する
+### ⑤ 01_basic.pyを起動する
 
-以下を入力してENTERを押します
+ターミナルの左端に `(venv)` と表示されている状態で、以下を入力してENTERを押します
+
 ```
 python ./samples/01_basic.py
 ```
