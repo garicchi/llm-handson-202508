@@ -41,9 +41,12 @@ python ./cli/setup.py
 
 #### Macの場合
 以下を入力してENTERを押します
+
 ```
 python3 ./cli/setup.py
 ```
+
+※ この手順では、Macの場合、 `python3` なので注意してください
 
 ### [VSCodeを起動するたび] venvを起動する
 
