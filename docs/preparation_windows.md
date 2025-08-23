@@ -88,6 +88,9 @@ winget install Microsoft.FoundryLocal
 
 ![1](./img/windows_foundry_install.png)
 
+> [!NOTE]
+> すべてのソース契約条件に同意しますか？と聞かれた場合は、Yを入力してEnterを押してください
+
 ## LLMモデルのダウンロード
 
 下記コマンドで、 `phi-4-mini` という名前のモデルをダウンロードします
