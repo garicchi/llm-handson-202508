@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Handson: Setup",
+            "label": "Handson: 環境セットアップ (Setup)",
             "type": "shell",
             "command": "python3",
             "windows": {
@@ -19,16 +19,17 @@
                 "reveal": "always",
                 "focus": true,
                 "panel": "shared",
-                "clear": true
+                "clear": true,
+                "showReuseMessage": false
             },
             "problemMatcher": []
         },
         {
-            "label": "Handson: Run this sample",
+            "label": "Handson: 今開いているサンプルファイルを実行 (run opened sample file)",
             "type": "shell",
             "command": "./venv/bin/python",
             "windows": {
-                "command": "./venv/Scripts/activate"
+                "command": "./venv/Scripts/python"
             },
             "args": [
                 "${file}"
@@ -38,7 +39,8 @@
                 "reveal": "always",
                 "focus": true,
                 "panel": "shared",
-                "clear": true
+                "clear": true,
+                "showReuseMessage": false
             },
             "problemMatcher": []
         }
