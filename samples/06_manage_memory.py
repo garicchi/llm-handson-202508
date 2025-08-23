@@ -1,6 +1,6 @@
 #
 # 06_manage_memory.py
-# LLMと会話をするときに、プロンプトを表示する
+# LLMと会話をするときに、会話履歴を表示する
 # 数字キーを押すと、その記憶を消去できるサンプル
 #
 
@@ -40,14 +40,16 @@ system_prompt = system_prompt_template.invoke({})
 # 会話履歴にシステムプロンプトを追加
 chat_histories.extend(system_prompt.to_messages())
 
+# 会話履歴を表示する関数
 def print_histories():
-    print('\n\n### プロンプト ###')
+    print('\n\n### 会話履歴 ###')
     for i, history in enumerate(chat_histories):
         print(f'[{i}] {history.type} {history.content}')
     print('################\n\n')
 
 # 会話ループ
 while True:
+    # 履歴を表示
     print_histories()
 
     # ユーザー入力を取得
@@ -58,6 +60,7 @@ while True:
         print('終了します')
         break
 
+    # 数字なら、その記憶を消去
     if user_input.isdigit():
         selected_number = int(user_input)
         history = chat_histories[selected_number]
