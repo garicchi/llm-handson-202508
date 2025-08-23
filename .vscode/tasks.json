@@ -56,7 +56,7 @@
                 "./samples/03_conversation.py",
                 "./samples/04_rag_basic.py",
                 "./samples/05_rag_advance.py",
-                "./samples/06_show_prompt.pyq"
+                "./samples/06_show_prompt.py"
             ]
         }
     ]
