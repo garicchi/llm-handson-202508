@@ -1,3 +1,8 @@
+#
+# 01_basic.py
+# LLMと1ターンの会話をする基本的なサンプル
+#
+
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from foundry_local import FoundryLocalManager

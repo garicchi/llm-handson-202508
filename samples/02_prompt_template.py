@@ -1,3 +1,9 @@
+#
+# 02_prompt_template.py
+# プロンプトテンプレートを利用し、
+# ユーザー入力をプロンプトに埋め込んでLLMを呼び出すサンプル
+#
+
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
 from langchain_core.prompts import ChatPromptTemplate

@@ -1,3 +1,9 @@
+#
+# 03_conversation.py
+# 会話履歴を保持し、LLMと複数ターンで会話するサンプル
+# 会話履歴をプロンプトに入れることで記憶を保持できる
+#
+
 from typing import List
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
