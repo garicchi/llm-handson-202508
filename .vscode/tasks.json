@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "Handson: 環境セットアップ (Setup)",
-            "type": "shell",
+            "type": "process",
             "command": "python3",
             "windows": {
                 "command": "python",
@@ -26,7 +26,7 @@
         },
         {
             "label": "Handson: サンプルファイルを実行 (run sample file)",
-            "type": "shell",
+            "type": "process",
             "command": "./venv/bin/python",
             "windows": {
                 "command": "./venv/Scripts/python"
