@@ -18,31 +18,45 @@
                 "echo": true,
                 "reveal": "always",
                 "focus": true,
-                "panel": "shared",
+                "panel": "new",
                 "clear": true,
                 "showReuseMessage": false
             },
             "problemMatcher": []
         },
         {
-            "label": "Handson: 今開いているサンプルファイルを実行 (run opened sample file)",
+            "label": "Handson: サンプルファイルを実行 (run sample file)",
             "type": "shell",
             "command": "./venv/bin/python",
             "windows": {
                 "command": "./venv/Scripts/python"
             },
             "args": [
-                "${file}"
+                "${input:pickSampleFile}"
             ],
             "presentation": {
                 "echo": true,
                 "reveal": "always",
                 "focus": true,
-                "panel": "shared",
+                "panel": "new",
                 "clear": true,
                 "showReuseMessage": false
             },
             "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+            "type": "pickString",
+            "id": "pickSampleFile",
+            "description": "実行するサンプルを選択",
+            "options": [
+                "./samples/01_basic.py",
+                "./samples/02_prompt_template.py",
+                "./samples/03_conversation.py",
+                "./samples/04_rag_basic.py",
+                "./samples/05_rag_advance.py"
+            ]
         }
     ]
 }
