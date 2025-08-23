@@ -6,7 +6,7 @@
             "type": "process",
             "command": "python3",
             "windows": {
-                "command": "python",
+                "command": "python.exe",
                 "args": [
                     "${workspaceFolder}/cli/setup.py"
                 ]
@@ -29,7 +29,7 @@
             "type": "process",
             "command": "./venv/bin/python",
             "windows": {
-                "command": "./venv/Scripts/python"
+                "command": "./venv/Scripts/python.exe"
             },
             "args": [
                 "${input:pickSampleFile}"
