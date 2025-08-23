@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "Handson: 環境セットアップ (Setup)",
-            "type": "shell",
+            "type": "process",
             "command": "python3",
             "windows": {
                 "command": "python",
