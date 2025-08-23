@@ -1,3 +1,10 @@
+#
+# 05_rag_advance.py
+# RAGを利用して外部知識を取り入れた会話をするサンプル
+# 知識はmarkdownで記載されたものを分割し、
+# 類似度が高いものをプロンプトに入れる
+#
+
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
 from langchain_core.prompts import ChatPromptTemplate

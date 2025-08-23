@@ -1,3 +1,8 @@
+#
+# 06_show_prompt.py
+# LLMと会話をするときに、プロンプトを表示するサンプル
+#
+
 from typing import List
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
