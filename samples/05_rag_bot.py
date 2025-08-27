@@ -9,7 +9,6 @@ from typing import List
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_text_splitters import MarkdownHeaderTextSplitter
 from langchain_core.messages import BaseMessage
 from pathlib import Path
 
