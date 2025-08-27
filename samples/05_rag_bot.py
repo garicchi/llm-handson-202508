@@ -6,7 +6,7 @@
 from typing import List
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import BaseMessage
 from pathlib import Path
 
@@ -40,8 +40,9 @@ with open(knowledge_path, 'r', encoding='utf-8') as f:
 # 会話履歴を保存するリスト
 chat_histories: List[BaseMessage] = []
 
-# システムプロンプトのテンプレートを定義
-system_prompt_template = ChatPromptTemplate.from_messages([
+# プロンプトテンプレートを定義
+prompt_template = ChatPromptTemplate.from_messages([
+    # システムプロンプト
     ('system', '''
 あなたは日本語で回答する料理のレシピアシスタントです
 3ターンほどをいくつかの質問をしてから、レシピを提案してください。
@@ -57,16 +58,12 @@ A: 作り方:
 
 ## レシピ情報
 {rag_knowledge}
-''')
+'''),
+    # 会話履歴
+    MessagesPlaceholder("history"),
+    # ユーザー入力
+    ('user', '{user_input_data}')
 ])
-# システムプロンプトを生成
-system_prompt = system_prompt_template.invoke({
-    'rag_knowledge': knowledge
-})
-# 会話履歴にシステムプロンプトを追加
-chat_histories.extend(system_prompt.to_messages())
-
-print('[アシスタント]: 料理のレシピについて何でも質問してください')
 
 # LLMの出力をストリーミングでprintし、全文を返す関数
 def print_stream(llm: ChatOpenAI, prompt: ChatPromptTemplate) -> str:
@@ -76,6 +73,8 @@ def print_stream(llm: ChatOpenAI, prompt: ChatPromptTemplate) -> str:
         output_text += chunk.content
     print()
     return output_text
+
+print('[アシスタント]: 料理のレシピについて何でも質問してください')
 
 # 会話ループ
 while True:
@@ -92,16 +91,13 @@ while True:
 
     print('回答を生成しています...')
 
-    # 会話履歴を含めたプロンプトテンプレートを定義
-    prompt_template = ChatPromptTemplate.from_messages(
-        # 会話履歴
-        chat_histories
-        # ユーザー入力
-        + [('user', '{user_input_data}')]
-    )
-
     # プロンプトを生成
     prompt = prompt_template.invoke({
+        # 知識を埋め込む
+        'rag_knowledge': knowledge,
+        # 会話履歴を埋め込む
+        'history': chat_histories,
+        # ユーザー入力を埋め込む
         'user_input_data': user_input
     })
 

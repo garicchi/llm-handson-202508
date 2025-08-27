@@ -7,7 +7,7 @@
 from typing import List
 from langchain_openai import ChatOpenAI
 from foundry_local import FoundryLocalManager
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import BaseMessage
 
 # 使用するモデル名
@@ -31,17 +31,19 @@ llm = ChatOpenAI(
 # 会話履歴を保存するリスト
 chat_histories: List[BaseMessage] = []
 
-# システムプロンプトのテンプレートを定義
-system_prompt_template = ChatPromptTemplate.from_messages([
-    ('system', 'あなたは日本語で回答するAIアシスタントです。マイクという名前で会話してください')
+# プロンプトテンプレートを定義
+prompt_template = ChatPromptTemplate.from_messages([
+    # システムプロンプト
+    ('system', 'あなたは日本語で回答するAIアシスタントです。マイクという名前で会話してください'),
+    # 会話履歴
+    MessagesPlaceholder("history"),
+    # ユーザー入力
+    ('user', '{user_input_data}')
 ])
-# システムプロンプトを生成
-system_prompt = system_prompt_template.invoke({})
-# 会話履歴にシステムプロンプトを追加
-chat_histories.extend(system_prompt.to_messages())
 
 # 会話ループ
 while True:
+    print()
     # ユーザー入力を取得
     user_input = input('入力してください(qキーで終了) > ')
 
@@ -54,16 +56,11 @@ while True:
 
     print('回答を生成しています...')
 
-    # 会話履歴を含めたプロンプトテンプレートを定義
-    prompt_template = ChatPromptTemplate.from_messages(
-        # 会話履歴
-        chat_histories
-        # ユーザー入力
-        + [('user', '{user_input_data}')]
-    )
-
     # プロンプトを生成
     prompt = prompt_template.invoke({
+        # 会話履歴を埋め込む
+        'history': chat_histories,
+        # ユーザー入力を埋め込む
         'user_input_data': user_input
     })
 
