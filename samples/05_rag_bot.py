@@ -59,9 +59,9 @@ A: 作り方:
 ## レシピ情報
 {rag_knowledge}
 '''),
-    # 会話履歴
+    # 会話履歴が入る場所
     MessagesPlaceholder("history"),
-    # ユーザー入力
+    # ユーザー入力が入る場所
     ('user', '{user_input_data}')
 ])
 

@@ -35,9 +35,9 @@ chat_histories: List[BaseMessage] = []
 prompt_template = ChatPromptTemplate.from_messages([
     # システムプロンプト
     ('system', 'あなたは日本語で回答するAIアシスタントです。マイクという名前で会話してください'),
-    # 会話履歴
+    # 会話履歴が入る場所
     MessagesPlaceholder("history"),
-    # ユーザー入力
+    # ユーザー入力が入る場所
     ('user', '{user_input_data}')
 ])
 
