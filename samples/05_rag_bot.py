@@ -1,8 +1,6 @@
 #
-# 05_rag_advance.py
-# RAGを利用して外部知識を取り入れた会話をするサンプル
-# 知識はmarkdownで記載されたものを分割し、
-# 類似度が高いものをプロンプトに入れる
+# 05_rag_bot.py
+# knowledge.mdに書いた知識を取り込んで、回答するbotサンプル
 #
 
 from typing import List
