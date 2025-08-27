@@ -72,7 +72,7 @@ while True:
     # 会話履歴に追加
     chat_histories.extend([
         # 最後のユーザー入力
-        prompt.to_messages()[-1],
+        [x for x in prompt.to_messages() if x.type == 'human'][-1],
         # アシスタントの回答
         assistant_output
     ])
