@@ -48,7 +48,7 @@ system_prompt_template = ChatPromptTemplate.from_messages([
 レシピ情報の中の情報を含めて、提案してください
 
 ## レシピ情報の出力例
-Q： 材料を表示
+Q: 材料を表示
 A: 材料: 
      * 牛薄切り肉: 200g
 Q: 作り方を表示
