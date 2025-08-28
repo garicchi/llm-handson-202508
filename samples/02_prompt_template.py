@@ -48,6 +48,15 @@ prompt = prompt_template.invoke({
     'user_input_data': user_input
 })
 
+#
+# user_inputに「こんにちは」と入力した場合、
+# promptの中身はこんな感じになる
+#   System: あなたは日本語で回答するAIアシスタントです。名前はマイクです
+#   Human: こんにちは
+#
+# 以下を実行するとプロンプトを見ることができる
+#.  print(prompt.to_string())
+
 # 回答を生成
 assistant_output = llm.invoke(prompt)
 
