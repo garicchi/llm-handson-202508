@@ -64,6 +64,8 @@ while True:
         'user_input_data': user_input
     })
 
+    # print(f'\n--プロンプト--\n{prompt.to_string()}\n------\n')
+
     # 回答を生成
     assistant_output = llm.invoke(prompt)
 
