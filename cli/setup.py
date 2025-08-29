@@ -2,7 +2,7 @@ import os
 import subprocess
 import logging
 
-from core import get_pip_path, get_root_path, get_root_python_path, get_venv_path
+from core import get_pip_path, get_root_path, get_root_python_path, get_venv_path, get_venv_python_path
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(os.path.basename(__file__))
@@ -18,6 +18,16 @@ def create_venv() -> None:
     logger.info("venvを作成します")
     subprocess.run([get_root_python_path(), "-m", "venv", venv_dir], shell=False)
     logger.info("🍺venvが作成されました")
+
+
+def upgrade_pip() -> None:
+    if not os.path.exists(get_venv_path()):
+        logger.error("venvが存在しません。先にcreate_venv()を実行してください")
+        exit(1)
+
+    logger.info("pipをアップグレードします")
+    subprocess.run([get_venv_python_path(), "-m", "pip", "install", "--upgrade", "pip"], shell=False)
+    logger.info("🍺pipがアップグレードされました")
 
 
 def install_dependencies() -> None:
@@ -43,4 +53,5 @@ def install_dependencies() -> None:
 
 if __name__ == "__main__":
     create_venv()
+    upgrade_pip()
     install_dependencies()
