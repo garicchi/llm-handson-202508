@@ -78,3 +78,7 @@ python ./samples/01_basic.py
 ```
 
 エラーなく起動すればOKです
+
+## ハンズオン環境掃除方法
+- [Windowsの方はこちら](./docs/cleanup_windows.md)
+- [Macの方はこちら](./docs/cleanup_mac.md)
