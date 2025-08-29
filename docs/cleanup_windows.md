@@ -3,7 +3,7 @@
 ## ダウンロードしたLLMモデルを削除する
 Powershellで以下を実行します
 
-```sh
+```
 foundry cache remove '*' --all --yes
 ```
 
